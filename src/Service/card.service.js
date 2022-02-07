@@ -31,7 +31,12 @@ const getProjectAndCards = async(userId) => {
     projectStep.map(item => stepIds.push(item.id));
     const card = await cardSchema.find();
     const cards = card.filter(item => stepIds.includes(item.stepId));
-    return { project: project, cards: cards};
+    return {
+        projectName: project[0].name,
+        bgColor: project[0].bgColor,
+        step: projectStep,
+        cards: cards
+    };
     
 }
 
